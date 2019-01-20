@@ -24,7 +24,20 @@
   citecolor = blue,
 }
 
+% Numbering
+\makeatletter
+	\renewcommand{\theequation}{% Ref of equations
+	\thesection.\arabic{equation}}
+	\@addtoreset{equation}{section}
 
+	\renewcommand{\thefigure}{% Ref of figures
+	\thesection.\arabic{figure}}
+	\@addtoreset{figure}{section}
+
+	\renewcommand{\thetable}{% Ref of tables
+	\thesection.\arabic{table}}
+	\@addtoreset{table}{section}
+\makeatother
 
 % For references from ADS
 \newcommand\apss{Astrophys. Space Sci.,\,}
