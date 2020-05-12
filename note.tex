@@ -1,47 +1,63 @@
 \documentclass[12pt]{article}
 
-\usepackage[dvipdfmx]{graphicx}
-
 %small packages
-\usepackage{color,amsmath,slashed,booktabs,braket,bm,authblk,graphicx,amssymb, framed}
-\usepackage[a4paper, total={16.5cm,22cm}]{geometry}
+\usepackage{color,slashed,booktabs,braket,bm,authblk,graphicx,bbold, adjustbox}
+\usepackage{amsmath}
+\usepackage{feynmp-auto}
+%\usepackage{amssymb}
+\usepackage{hyperref}
+%\usepackage[a4paper, total={16.5cm,22cm}]{geometry}
+\usepackage[a4paper,width=150mm,top=30mm,bottom=30mm,bindingoffset=6mm]{geometry}
+
+% header
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhead{}
+% \setlength\headheight{14.5pt}
+% \setlength{\footskip}{40.0pt}
+% \fancyhead[LE]{\leftmark}
+% \fancyhead[RO]{\nouppercase{\rightmark}}
+% \renewcommand{\chaptermark}[1]{%
+%   \markboth{\thechapter.\ #1}{}}
+% \renewcommand{\headrulewidth}{0.4pt}
+
 %Check packages
-\RequirePackage[l2tabu, orthodox]{nag} %check old package
-\usepackage[all, warning]{onlyamsmath} %check non-amsmath equations %This is not compatible with tikz??
+%\RequirePackage[l2tabu, orthodox]{nag} %check old package
+%\usepackage[all, warning]{onlyamsmath} %check non-amsmath equations %This is not compatible with tikz??
 
 % select fonts
 %\usepackage{newtxtext}
-\usepackage{tgtermes}
-%\usepackage[varg]{newtxmath} %varg changes not only g but also v, w, y
-\usepackage[utf8x]{inputenc} %[utf8] may have some troubles
+%\usepackage[varg]{newtxmath} %vtrg changes not only g but also v, w, y
+\usepackage{stix2}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc} %[utf8] may have some troubles
+\DeclareUnicodeCharacter{2212}{-}
 
-% shaded frame
-\definecolor{shadecolor}{gray}{0.85}
+
+% Japanese
+\usepackage{CJKutf8}
 
 \usepackage[sort&compress,numbers, merge]{natbib}
-\usepackage[linktocpage]{hyperref}
+\usepackage[nottoc]{tocbibind}
 
 %set hyperref
+\definecolor{azure}{rgb}{0.0, 0.5, 1.0}
+\definecolor{green}{rgb}{0.0, 0.5, 0.0}
 \hypersetup{
+  linktoc=page,
   colorlinks = true,
-  linkcolor = blue,
-  citecolor = blue,
+  linkcolor = azure,
+  citecolor = azure,
 }
 
-% Numbering
-\makeatletter
-	\renewcommand{\theequation}{% Ref of equations
-	\thesection.\arabic{equation}}
-	\@addtoreset{equation}{section}
+\usepackage{afterpage}
 
-	\renewcommand{\thefigure}{% Ref of figures
-	\thesection.\arabic{figure}}
-	\@addtoreset{figure}{section}
-
-	\renewcommand{\thetable}{% Ref of tables
-	\thesection.\arabic{table}}
-	\@addtoreset{table}{section}
-\makeatother
+\newcommand\blankpage{
+  \null
+  \thispagestyle{empty}
+  \addtocounter{page}{-1}
+  \newpage
+}
 
 % For references from ADS
 \newcommand\apss{Astrophys. Space Sci.,\,}
@@ -52,12 +68,13 @@
 \newcommand{\apjl}{Astrophys. J. Lett.\,}
 \newcommand{\pasa}{Publications of the Astronomical Society of Australia\,}
 \newcommand{\sovast}{Soviet Astronomy\,}
+\newcommand{\iaucirc}{IAU Circ.\,}
 
 
 % ---------------------------------------------------- 
 \title{{\bfseries Note}}
-\author[1]{}
-\affil[1]{{\small \textit{Department of Physics, University of Tokyo, Tokyo 113--0033,Japan}}}
+\author[1]{My name}
+\affil[1]{{\small \textit{My affilation}}}
 \date{}
 % ---------------------------------------------------------------------
 
@@ -134,19 +151,13 @@
 \section{Section 1}
 \label{sec:sec1}
 
+\begin{align}
+  \mathcal{L} = \bar\psi \gamma^\mu \partial_\mu\psi
+\end{align}
 
-
-
+MyPaper~\cite{Yanagi:2019vrr}.
 
 \bibliographystyle{utphysmod}
-%\bibliography{note} % if your bibtex file is called example.bib
+\bibliography{note} % if your bibtex file is called example.bib
 
-\end{document}
-
-
-
-
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: t
-%%% End:
+\end{document}  
